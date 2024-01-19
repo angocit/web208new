@@ -13,6 +13,9 @@ export class HomeProductComponentComponent {
    products: any;
    httpClient = inject(HttpClient);
     ngOnInit() {
+      let login = localStorage.getItem('login');
+      console.log(login);
+      
       this.getProudctData();
     }
    getProudctData(){

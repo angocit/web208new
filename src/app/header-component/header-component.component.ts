@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IMenu } from '../interface/Menu';
 import {CommonModule} from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-header-component',
   standalone: true,
@@ -10,6 +10,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header-component.component.css'
 })
 export class HeaderComponentComponent {
+  router = inject(Router)
+  logout(){
+    // console.log('logged out');
+    localStorage.removeItem('login');   
+    this.router.navigate(['login']);
+  }
   menus: IMenu[] = [
     {
       id:1,
