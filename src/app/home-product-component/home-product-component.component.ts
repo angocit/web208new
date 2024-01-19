@@ -16,7 +16,7 @@ export class HomeProductComponentComponent {
       this.getProudctData();
     }
    getProudctData(){
-    this.httpClient.get('https://dummyjson.com/products')
+    this.httpClient.get('https://dummyjson.com/products/')
     .subscribe((response:any)=>{
         // console.log(response);
         this.products = response.products;

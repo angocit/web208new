@@ -10,8 +10,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
-export class ProductDetailComponent {
-  product:any;
+export class ProductDetailComponent {  
+  product:any = {title:""};
   constructor(private routes: ActivatedRoute){
   }
   httpClient = inject(HttpClient);

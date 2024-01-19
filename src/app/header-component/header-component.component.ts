@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { IMenu } from '../interface/Menu';
 import {CommonModule} from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-header-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink,RouterLinkActive],
   templateUrl: './header-component.component.html',
   styleUrl: './header-component.component.css'
 })
@@ -13,19 +14,19 @@ export class HeaderComponentComponent {
     {
       id:1,
       name:'Trang chủ',
-      url:"trang-chu",
+      url:"/",
       parent:0
     },
     {
       id:2,
       name:'Giới thiệu',
-      url:"trang-chu",
+      url:"dashboard",
       parent:0
     },
     {
       id:3,
       name:'Tin tức',
-      url:"trang-chu",
+      url:"dashboard/product",
       parent:0
     },
     {
