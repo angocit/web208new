@@ -20,7 +20,7 @@ export class LoginComponent {
     onSubmit(){
        let u = this.loginform.controls.username.value;
        let p = this.loginform.controls.password.value
-       if ((u=='admin')||(p=='123456'))  {
+       if ((u=='admin')&&(p=='123456'))  {
         this.mess = "Đăng nhập thành công";
         localStorage.setItem('login','ok');
         this.router.navigate(['dashboard']);
