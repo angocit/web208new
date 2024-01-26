@@ -5,6 +5,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { guardGuard } from './Guard/guard.guard';
 import { ProductComponent } from './admin/product/product.component';
 import { LoginComponent } from './admin/login/login.component';
+import { ProductAdminListComponent } from './admin/product/product-admin-list/product-admin-list.component';
+import { ProductEditComponent } from './admin/product/product-edit/product-edit.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponentComponent},
@@ -12,7 +14,9 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'dashboard', component: DashboardComponent,canActivate: [guardGuard],
         children:[
-            {path:'product', component:ProductComponent}
+            {path:'add-product', component:ProductComponent},
+            {path:'product-list', component:ProductAdminListComponent},
+            {path:'edit-product/:id', component:ProductEditComponent}
         ]
     }
 ];
