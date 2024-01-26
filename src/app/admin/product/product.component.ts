@@ -13,6 +13,7 @@ export class ProductComponent {
   constructor(private http: HttpClient){
 
   }
+  category:any;
     productForm = new FormGroup({
         name:new FormControl('',[Validators.required]),
         price: new FormControl('',[Validators.required]),
@@ -45,5 +46,15 @@ export class ProductComponent {
             }
         });
         
+    }
+    ngOnInit() {
+      this.getCategory();
+      // console.log("sdfsdfds");
+      
+    }
+    getCategory(){
+      this.http.get('http://localhost:3000/categories').subscribe((data:any) =>{
+            this.category = data;         
+      });
     }
 }
