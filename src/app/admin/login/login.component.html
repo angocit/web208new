@@ -10,7 +10,11 @@
               <div *ngIf="!loginform.controls.password?.valid&&(loginform.controls.password?.dirty||loginform.controls.password?.touched)">
                 <pre>Mật khẩu không nhỏ hơn 6 kí tự</pre>
               </div>
-              <button class="btn btn-primary" type="submit">Đăng nhập</button>
+              <!-- <input type="email" class="form-control" placeholder="Email" formControlName="email">
+              <div *ngIf="!loginform.controls.email?.valid&&(loginform.controls.email?.dirty||loginform.controls.email?.touched)">
+                <pre>Không đúng định dạng email</pre>
+              </div> -->
+              <button class="btn btn-primary" type="submit" [disabled]="!loginform.valid">Đăng nhập</button>
               <div class="mess">
                 {{mess}}
               </div>
