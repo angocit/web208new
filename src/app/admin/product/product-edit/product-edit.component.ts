@@ -56,7 +56,13 @@ export class ProductEditComponent {
     getProductByID(id:any){
       this.http.get('http://localhost:3000/products/'+id).subscribe((data:any) =>{
             this.product = data;  
-            console.log(data);
+            this.productForm.setValue({
+              name: data.name,
+              price: data.price,
+              cate_id: data.cate_id,
+              image: data.image,
+              detail: data.detail
+            })
                    
       });
     }
