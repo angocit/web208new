@@ -19,4 +19,12 @@ export class ProductAdminListComponent {
          this.products = response;
         });
     }
+    handleDelProduct(pid:any){
+      if (confirm('Bạn muốn xóa sản phẩm này?')){
+      this.http.delete('http://localhost:3000/products/'+pid).subscribe((response)=>{
+        this.products = response;
+        this.getAllProduct();
+       }); 
+      }       
+    }
 }

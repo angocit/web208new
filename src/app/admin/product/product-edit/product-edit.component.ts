@@ -47,6 +47,7 @@ export class ProductEditComponent {
     ngOnInit() {
       this.getCategory(); 
       this.getProductByID(this.id);
+      console.dir(this.route)
     }
     getCategory(){
       this.http.get('http://localhost:3000/categories').subscribe((data:any) =>{
