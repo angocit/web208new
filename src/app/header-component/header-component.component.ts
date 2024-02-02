@@ -10,11 +10,15 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header-component.component.css'
 })
 export class HeaderComponentComponent {
+  constructor(){}
   router = inject(Router)
+  cart:any;
   logout(){
     // console.log('logged out');
     localStorage.removeItem('login');   
     this.router.navigate(['login']);
+  }
+  ngOnInit(): void {
   }
   menus: IMenu[] = [
     {

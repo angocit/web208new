@@ -39,7 +39,7 @@ export class HomeProductComponentComponent {
         console.log(`chuwa tồn tại`);        
         localStorage.setItem('cart',JSON.stringify([product]));
       }
-      if (cart !==null){
+      else{
         console.log(`đã tồn tại`);
           // - Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa.
           //  -  nếu có rồi thì chỉ thay đổi số lượng
@@ -54,7 +54,7 @@ export class HomeProductComponentComponent {
             vitri = i;
            }
         }
-        if (ktra){
+        if (ktra){ // Sản phẩm xuất hiện tỏng giỏ hàng
           products[vitri].quantity = products[vitri].quantity+1;
         }
         else {
