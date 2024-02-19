@@ -1,5 +1,10 @@
 <div id="content">
     <div class="container">
+        <form [formGroup]="formfilter" (ngSubmit)="onFilter()">
+                <input type="number" formControlName="minprice"/>
+                <input type="number" formControlName="maxprice"/>
+                <button type="submit" class="btn btn-primary">Lọc</button>
+        </form>
       <div class="row">    
             <div *ngFor="let product of products"class="product1 col-6 col-sm-4 col-md-4 col-lg-3">
                 <img src="{{product.image}}"/>                

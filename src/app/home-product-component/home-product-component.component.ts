@@ -1,15 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home-product-component',
   standalone: true,
-  imports: [HttpClientModule,CommonModule],
+  imports: [HttpClientModule,CommonModule,ReactiveFormsModule],
   templateUrl: './home-product-component.component.html',
   styleUrl: './home-product-component.component.css'
 })
 export class HomeProductComponentComponent {
+   formfilter = new FormGroup({
+    minprice: new FormControl(1),
+    maxprice: new FormControl(10000)
+   });
    products: any;
    httpClient = inject(HttpClient);
     ngOnInit() {
@@ -23,6 +28,25 @@ export class HomeProductComponentComponent {
     .subscribe((response:any)=>{
         // console.log(response);
         this.products = response;
+    })
+   }
+   onFilter(){   
+    let maxprice = (this.formfilter.controls.maxprice.value!==null)?this.formfilter.controls.maxprice.value:0
+    // let minprice = this.formfilter.controls.minprice.value; 
+    // let maxprice = 10;
+    let minprice =  (this.formfilter.controls.minprice.value!==null)?this.formfilter.controls.minprice.value:0;
+    //Lấy toàn bộ danh sách sản phẩm
+    this.httpClient.get('http://localhost:3000/products')
+    .subscribe((response:any)=>{
+        //Lọc sản phẩm theo điều kiện
+        // console.log(response);
+        // lấy giá trị max,min từ input
+        
+        const productfilter = response.filter((data:any)=>{
+            return data.price>=minprice && data.price<=maxprice;
+        })
+        // console.log(productfilter);        
+        this.products = productfilter;
     })
    }
    addToCart(pid:any,name:any,image:any,price:any){
