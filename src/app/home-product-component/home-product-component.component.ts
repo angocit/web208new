@@ -31,10 +31,10 @@ export class HomeProductComponentComponent {
     })
    }
    onFilter(){   
-    let maxprice = (this.formfilter.controls.maxprice.value!==null)?this.formfilter.controls.maxprice.value:0
-    // let minprice = this.formfilter.controls.minprice.value; 
+    // let maxprice = (this.formfilter.controls.maxprice.value!==null)?this.formfilter.controls.maxprice.value:0
+    let maxprice = this.formfilter.controls.maxprice.value??0; 
     // let maxprice = 10;
-    let minprice =  (this.formfilter.controls.minprice.value!==null)?this.formfilter.controls.minprice.value:0;
+    let minprice =  this.formfilter.controls.minprice.value??0
     //Lấy toàn bộ danh sách sản phẩm
     this.httpClient.get('http://localhost:3000/products')
     .subscribe((response:any)=>{
