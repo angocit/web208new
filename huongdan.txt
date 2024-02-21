@@ -1,0 +1,16 @@
+Cài json-server + json-server auth:
+
+ npm i json-server@0.17.4 json-server-auth
+ Bổ sung trường users vào file db.json   
+
+Cấu trúc:
+"users":[]
+
+Bổ sung đoạn sau vào file package.json
+"scripts": {
+    "auth":"json-server db.json -m ./node_modules/json-server-auth",
+    "server":"npx json-server db.json"
+  }
+
+  Lệnh khởi động json-server: npm run server
+  Lệnh khởi động json-server-auth: npm run auth

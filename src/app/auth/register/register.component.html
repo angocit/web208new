@@ -1,0 +1,9 @@
+<div class="container">
+    {{mess}}
+    <form [formGroup]="formregister" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="hoten" class="form-control" placeholder="Họ tên"/>
+        <input type="text" formControlName="email" class="form-control" placeholder="Email"/>
+        <input type="text" formControlName="password" class="form-control" placeholder="Mật khẩu"/>
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+    </form>
+</div>
