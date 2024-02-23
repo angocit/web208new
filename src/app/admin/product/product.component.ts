@@ -1,16 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,ToastModule],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
+  providers: [MessageService]
 })
 export class ProductComponent {
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient,private messageService: MessageService){
 
   }
   category:any;
@@ -40,6 +43,7 @@ export class ProductComponent {
                   image:'',
                   detail:''
                 });
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
             }  
             else{
               this.mess = 'Đăng không thành công';

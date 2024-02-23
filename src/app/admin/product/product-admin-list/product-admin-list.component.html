@@ -1,3 +1,5 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
 <table>
     <thead>
         <tr>
@@ -15,7 +17,7 @@
                 <td><img src="{{product.image}}" width="80"/></td>
                 <td>{{product.name}}</td>
                 <td>{{product.price}}</td>
-                <td><a href="/dashboard/edit-product/{{product.id}}" class="btn btn-primary">Sửa</a><a class="btn btn-danger" (click)="handleDelProduct(product.id)">Xóa</a></td>
+                <td><a href="/dashboard/edit-product/{{product.id}}" class="btn btn-primary">Sửa</a><a class="btn btn-danger" (click)="handleDelProduct(product.id,$event)">Xóa</a></td>
             </tr>
         }
     </tbody>
