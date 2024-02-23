@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-home-product-component',
@@ -11,6 +12,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './home-product-component.component.css'
 })
 export class HomeProductComponentComponent {
+  constructor(private productservice:ProductService){}
    formfilter = new FormGroup({
     minprice: new FormControl(1),
     maxprice: new FormControl(10000)
@@ -24,11 +26,14 @@ export class HomeProductComponentComponent {
       this.getProudctData();
     }
    getProudctData(){
-    this.httpClient.get('http://localhost:3000/products')
-    .subscribe((response:any)=>{
-        // console.log(response);
+    // this.httpClient.get('http://localhost:3000/products')
+    // .subscribe((response:any)=>{
+    //     // console.log(response);
+    //     this.products = response;
+    // })
+    this.productservice.getAllProduct(this.httpClient).subscribe((response:any)=>{
         this.products = response;
-    })
+    });
    }
    onFilter(){   
     // let maxprice = (this.formfilter.controls.maxprice.value!==null)?this.formfilter.controls.maxprice.value:0
